@@ -1,0 +1,119 @@
+.footer {
+  background-color: $darkBlue;
+  color: $white;
+  padding: 2.5rem;
+  text-align: center;
+
+  .container {
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) 2fr;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-areas:
+        "logo links1 links2 cta"
+        "social links1 links2 copyright";
+    }
+  }
+  a {
+    color: $white;
+  }
+  &__logo {
+    display: inline-block;
+    @include breakpoint-down(medium) {
+      margin-bottom: 1.875rem;
+    }
+    @include breakpoint-up(large) {
+      grid-area: logo;
+      justify-self: start;
+    }
+  }
+  &__social {
+    @include breakpoint-down(medium) {
+      margin-bottom: 1.875rem;
+    }
+
+    @include breakpoint-up(large) {
+      grid-area: social;
+      justify-self: start;
+      align-self: end;
+    }
+
+    a {
+      display: inline-block;
+
+      svg path {
+        transition: fill 0.2s ease-in-out;
+      }
+      &:hover svg path {
+        fill: $limeGreen;
+      }
+    }
+    a:not(:last-child) {
+      margin-right: 0.87rem;
+    }
+  }
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9375rem;
+
+    @include breakpoint-up(large) {
+      align-items: flex-start;
+      justify-self: center;
+    }
+
+    &.col1 {
+      @include breakpoint-up(large) {
+        grid-area: links1;
+      }
+    }
+    &.col2 {
+      @include breakpoint-down(medium) {
+        margin-bottom: 1.875rem;
+      }
+      @include breakpoint-up(large) {
+        grid-area: links2;
+      }
+    }
+    a {
+      line-height: 2;
+      &:hover {
+        color: $limeGreen;
+        transition: 0.2s ease-in-out;
+      }
+    }
+  }
+  &__cta {
+    @include breakpoint-up(large) {
+      grid-area: cta;
+      text-align: right;
+    }
+    a.button {
+      @include breakpoint-down(medium) {
+        margin-bottom: 1.875rem;
+      }
+    }
+  }
+  &__copyright {
+    color: $grayishBlue;
+    font-weight: 400;
+    @include breakpoint-up(large) {
+      grid-area: copyright;
+      text-align: right;
+      align-self: end;
+    }
+  }
+}
+
+.attribution {
+  background-color: $darkBlue;
+  color: $white;
+  padding-bottom: 1rem;
+  a {
+    color: $white;
+    &:hover {
+      color: $limeGreen;
+    }
+  }
+}
